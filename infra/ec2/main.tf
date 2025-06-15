@@ -22,7 +22,7 @@ resource "aws_instance" "dev_proj_1_ec2" {
   tags = {
     Name = var.tag_name
   }
-  key_name                    = "aws_key"
+  key_name                    = "devops-projects"
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [var.sg_enable_ssh_https, var.ec2_sg_name_for_python_api]
   associate_public_ip_address = var.enable_public_ip_address
@@ -34,8 +34,9 @@ resource "aws_instance" "dev_proj_1_ec2" {
     http_tokens   = "required" # Require the use of IMDSv2 tokens
   }
 }
-
+/*
 resource "aws_key_pair" "dev_proj_1_public_key" {
   key_name   = "aws_key"
   public_key = var.public_key
 }
+*/
