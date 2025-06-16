@@ -6,11 +6,20 @@ variable "mysql_username" {}
 variable "mysql_password" {}
 variable "mysql_dbname" {}
 
+#rds end point
+output "rds_endpoint" {
+  value = aws_db_instance.default.address
+  description = "The endpoint of the RDS MySQL instance"
+}
+
+
 # RDS Subnet Group
 resource "aws_db_subnet_group" "dev_proje_1_db_subnet_group" {
   name       = var.db_subnet_group_name
   subnet_ids = var.subnet_groups # replace with your private subnet IDs
 }
+
+
 
 resource "aws_db_instance" "default" {
   allocated_storage       = 10

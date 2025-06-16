@@ -89,6 +89,24 @@ resource "aws_security_group" "ec2_sg_python_api" {
     protocol    = "tcp"
   }
 
+    # ssh for aws console from us-east-1
+  ingress {
+    description = "Allow traffic on port 5000"
+    cidr_blocks = ["18.206.107.24/29"]
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+  }
+
+  #Outgoing request
+  egress {
+    description = "Allow outgoing request"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "Security Groups to allow traffic on port 5000"
   }
