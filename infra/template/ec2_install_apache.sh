@@ -1,8 +1,8 @@
 #! /bin/bash
 # shellcheck disable=SC2164
 cd /home/ubuntu
-yes | sudo apt update
-yes | sudo apt install python3 python3-pip python3-venv
+sudo apt update -y
+sudo apt install python3 python3-pip python3-venv -y
 git clone https://github.com/rabie01/python-mysql-db-proj-1.git
 sleep 20
 # shellcheck disable=SC2164
@@ -17,6 +17,5 @@ pip3 install -r requirements.txt
 echo "export DB_HOST=${DB_ENDPOINT}" >> ~/.bashrc
 export DB_HOST=${DB_ENDPOINT}
 echo 'Waiting for 30 seconds before running the app.py'
-setsid python3 -u app.py &
+nohup python3 -u app.py > /home/ubuntu/app.log 2>&1 &
 sleep 30
-python3-pymysql
