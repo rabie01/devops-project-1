@@ -14,7 +14,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 #read db end point into env var
-echo "export DB_HOST=__DB_ENDPOINT__ >> ~/.bashrc
+echo "export DB_HOST=__DB_ENDPOINT__" >> ~/.bashrc
 export DB_HOST=__DB_ENDPOINT__
 echo 'Waiting for 10 seconds before running the app.py'
 nohup python3 -u app.py > /home/ubuntu/app.log 2>&1 &
