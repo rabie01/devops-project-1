@@ -11,19 +11,19 @@ pipeline {
             booleanParam(name: 'DESTROY_TERRAFORM', defaultValue: false, description: 'Check to apply Terraform changes')
     }
 
-    // stages {
-    //     stage('Clone Repository') {
-    //         steps {
-    //             // Clean workspace before cloning (optional)
-    //             deleteDir()
+    stages {
+        // stage('Clone Repository') {
+        //     steps {
+        //         // Clean workspace before cloning (optional)
+        //         deleteDir()
 
-    //             // Clone the Git repository
-    //             git branch: 'main',
-    //                 url: 'https://github.com/rabie01/devops-project-1.git'
+        //         // Clone the Git repository
+        //         git branch: 'main',
+        //             url: 'https://github.com/rabie01/devops-project-1.git'
 
-    //             sh "ls -lart"
-    //         }
-    //     }
+        //         sh "ls -lart"
+        //     }
+        // }
 
         stage('Terraform Init') {
                     steps {
