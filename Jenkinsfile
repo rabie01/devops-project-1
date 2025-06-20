@@ -51,17 +51,33 @@ pipeline {
             }
         }
 
+        // stage('Terraform Apply') {
+        //     steps {
+        //         script {
+        //             if (params.APPLY_TERRAFORM) {
+        //                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-awsadmin']]){
+        //                     dir('infra') {
+        //                         sh 'echo "=================Terraform Apply=================="'
+        //                         sh 'terraform apply -auto-approve'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
         stage('Terraform Apply') {
+            when {
+                expression {params.APPLY_TERRAFORM}
+            }
             steps {
                 script {
-                    if (params.APPLY_TERRAFORM) {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-awsadmin']]){
                             dir('infra') {
                                 sh 'echo "=================Terraform Apply=================="'
                                 sh 'terraform apply -auto-approve'
                             }
                         }
-                    }
                 }
             }
         }
